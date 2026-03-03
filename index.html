@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার প্রথম ওয়েবপেজ | ইন্টারঅ্যাকটিভ বাটন</title>
+    
+    <!-- CSS স্টাইল -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            animation: slideIn 1s ease;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+        }
+        
+        .btn-success {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(45deg, #f1c40f, #f39c12);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+        }
+        
+        .color-palette {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .color-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-box:hover {
+            transform: scale(1.2);
+        }
+        
+        .message-area {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            color: #333;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .counter {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .badge {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+        
+        /* রেস্পন্সিভ ডিজাইন */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body id="mainBody">
+    <div class="container">
+        <h1 id="mainTitle">🚀 আমার প্রথম ওয়েবপেজ</h1>
+        <p id="mainParagraph">ইন্টারঅ্যাকটিভ বাটন, ডায়নামিক কালার এবং রেস্পন্সিভ ডিজাইন সহ</p>
+        
+        <!-- বাটন গ্রুপ -->
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="showAlert()">
+                এলার্ট দেখান
+            </button>
+            <button class="btn btn-success" onclick="changeText()">
+                টেক্সট পরিবর্তন
+            </button>
+            <button class="btn btn-warning" onclick="toggleDarkMode()">
+                ডার্ক মোড
+            </button>
+            <button class="btn btn-danger" onclick="resetAll()">
+                রিসেট
+            </button>
+        </div>
+        
+        <!-- কালার প্যালেট -->
+        <div class="color-palette">
+            <div class="color-box" style="background: #3498db;" onclick="changeBgColor('#3498db')"></div>
+            <div class="color-box" style="background: #e74c3c;" onclick="changeBgColor('#e74c3c')"></div>
+            <div class="color-box" style="background: #2ecc71;" onclick="changeBgColor('#2ecc71')"></div>
+            <div class="color-box" style="background: #f39c12;" onclick="changeBgColor('#f39c12')"></div>
+            <div class="color-box" style="background: #9b59b6;" onclick="changeBgColor('#9b59b6')"></div>
+            <div class="color-box" style="background: #1abc9c;" onclick="changeBgColor('#1abc9c')"></div>
+            <div class="color-box" style="background: #e67e22;" onclick="changeBgColor('#e67e22')"></div>
+            <div class="color-box" style="background: #95a5a6;" onclick="changeBgColor('#95a5a6')"></div>
+        </div>
+        
+        <!-- মেসেজ এরিয়া -->
+        <div class="message-area" id="messageBox">
+            👋 স্বাগতম! বাটনে ক্লিক করুন
+        </div>
+        
+        <!-- কাউন্টার -->
+        <div class="counter">
+            বাটন ক্লিক কাউন্টার: <span id="clickCounter" class="badge">0</span>
+        </div>
+        
+        <!-- টাইম স্ট্যাম্প -->
+        <div class="counter" style="font-size: 0.9rem; color: #999;" id="timeStamp">
+            শেষ আপডেট: এখনই
+        </div>
+    </div>
+    
+    <!-- JavaScript কোড -->
+    <script>
+        // ভেরিয়েবল ডিক্লেয়ার
+        let clickCount = 0;
+        let isDarkMode = false;
+        
+        // এলিমেন্ট সিলেক্ট করা
+        const messageBox = document.getElementById('messageBox');
+        const clickCounter = document.getElementById('clickCounter');
+        const mainTitle = document.getElementById('mainTitle');
+        const mainParagraph = document.getElementById('mainParagraph');
+        const timeStamp = document.getElementById('timeStamp');
+        const body = document.getElementById('mainBody');
+        
+        // ফাংশন ১: এলার্ট দেখানো
+        function showAlert() {
+            alert('🚀 হ্যালো! আপনি বাটনে ক্লিক করেছেন!');
+            updateCounter();
+            showMessage('এলার্ট দেখানো হয়েছে ✅');
+        }
+        
+        // ফাংশন ২: টেক্সট পরিবর্তন
+        function changeText() {
+            mainTitle.innerHTML = '🎉 টেক্সট পরিবর্তন হয়েছে!';
+            mainParagraph.innerHTML = 'আপনি সফলভাবে টেক্সট পরিবর্তন করেছেন। এটি ডায়নামিক কন্টেন্ট!';
+            updateCounter();
+            showMessage('টেক্সট পরিবর্তন করা হয়েছে ✨');
+        }
+        
+        // ফাংশন ৩: ডার্ক মোড টগল
+        function toggleDarkMode() {
+            if (isDarkMode) {
+                body.style.backgroundColor = '#ffffff';
+                body.style.color = '#333333';
+                document.querySelector('.container').style.background = 'rgba(255, 255, 255, 0.9)';
+                showMessage('লাইট মোড চালু হয়েছে ☀️');
+            } else {
+                body.style.backgroundColor = '#2c3e50';
+                body.style.color = '#ffffff';
+                document.querySelector('.container').style.background = 'rgba(44, 62, 80, 0.9)';
+                document.querySelector('.container').style.color = '#ffffff';
+                showMessage('ডার্ক মোড চালু হয়েছে 🌙');
+            }
+            isDarkMode = !isDarkMode;
+            updateCounter();
+        }
+        
+        // ফাংশন ৪: ব্যাকগ্রাউন্ড কালার পরিবর্তন
+        function changeBgColor(color) {
+            body.style.backgroundColor = color;
+            showMessage(`ব্যাকগ্রাউন্ড কালার পরিবর্তন করা হয়েছে: ${color} 🎨`);
+            updateCounter();
+        }
+        
+        // ফাংশন ৫: রিসেট সবকিছু
+        function resetAll() {
+            body.style.backgroundColor = '#ffffff';
+            body.style.color = '#333333';
+            mainTitle.innerHTML = '🚀 আমার প্রথম ওয়েবপেজ';
+            mainParagraph.innerHTML = 'ইন্টারঅ্যাকটিভ বাটন, ডায়নামিক কালার এবং রেস্পন্সিভ ডিজাইন সহ';
+            document.querySelector('.container').style.background = 'rgba(255, 255, 255, 0.9)';
+            document.querySelector('.container').style.color = '#333333';
+            isDarkMode = false;
+            clickCount = 0;
+            clickCounter.innerHTML = clickCount;
+            showMessage('সবকিছু রিসেট করা হয়েছে 🔄');
+            updateTimeStamp();
+        }
+        
+        // ফাংশন ৬: কাউন্টার আপডেট
+        function updateCounter() {
+            clickCount++;
+            clickCounter.innerHTML = clickCount;
+            updateTimeStamp();
+        }
+        
+        // ফাংশন ৭: মেসেজ দেখানো
+        function showMessage(msg) {
+            messageBox.innerHTML = msg;
+            messageBox.style.animation = 'pulse 0.5s ease';
+            setTimeout(() => {
+                messageBox.style.animation = '';
+            }, 500);
+        }
+        
+        // ফাংশন ৮: টাইম স্ট্যাম্প আপডেট
+        function updateTimeStamp() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('bn-BD', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            timeStamp.innerHTML = `⏰ শেষ আপডেট: ${timeString}`;
+        }
+        
+        // ফাংশন ৯: কীবোর্ড ইভেন্ট
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'd' || event.key === 'D') {
+                toggleDarkMode();
+            } else if (event.key === 'r' || event.key === 'R') {
+                resetAll();
+            } else if (event.key === 'a' || event.key === 'A') {
+                showAlert();
+            }
+        });
+        
+        // ফাংশন ১০: মাউস মুভ ইফেক্ট
+        document.addEventListener('mousemove', function(event) {
+            const x = (event.clientX / window.innerWidth) * 100;
+            const y = (event.clientY / window.innerHeight) * 100;
+            // অপশনাল: মাউসের সাথে সাথে হালকা ইফেক্ট
+        });
+        
+        // পৃষ্ঠা লোড হওয়ার সময়
+        window.onload = function() {
+            showMessage('🎉 পৃষ্ঠা লোড হয়েছে! স্বাগতম!');
+            updateTimeStamp();
+        };
+        
+        // উইন্ডো রিসাইজ ইভেন্ট
+        window.addEventListener('resize', function() {
+            if (window.innerWidth < 768) {
+                console.log('মোবাইল ভিউ');
+            }
+        });
+    </script>
+</body>
+</html>
